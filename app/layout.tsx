@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { Fraunces, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
+// Fraunces is a variable font. When `axes` is specified, `weight` must be
+// omitted (or set to "variable") — the axes cover the full weight range.
 const fraunces = Fraunces({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-fraunces",
   axes: ["opsz", "SOFT", "WONK"],
-  weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
 });
 
