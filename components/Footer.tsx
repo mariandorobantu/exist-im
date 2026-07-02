@@ -23,7 +23,6 @@ export function Footer() {
               { href: "/system", label: "System" },
               { href: "/agents", label: "Agents" },
               { href: "/essay", label: "Essay" },
-              { href: "/founder", label: "Founder" },
               { href: "/contact", label: "Contact" },
             ].map((l) => (
               <Link

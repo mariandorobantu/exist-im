@@ -18,23 +18,17 @@ export default function EssayPage() {
 
         <main>
           {/* Essay header */}
-          <header className="container-x pt-[168px] pb-24 max-md:pt-[128px] max-md:pb-16">
+          <header className="container-x pt-[196px] pb-24 max-md:pt-[156px] max-md:pb-16">
             <div className="reveal font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">
               Essay · 2026
             </div>
 
-            <h1
-              className="reveal mt-8 font-serif font-light text-[clamp(48px,7.6vw,112px)] leading-[0.98] tracking-tightest text-ink"
-              style={{ fontVariationSettings: '"opsz" 144, "SOFT" 20' }}
-            >
+            <h1 className="reveal mt-8 font-serif font-light text-[clamp(48px,7.6vw,112px)] leading-[0.98] tracking-tightest text-ink">
               The Right to Kill{" "}
               <span className="text-accent">Ideas</span>
             </h1>
 
-            <p
-              className="reveal mt-6 max-w-[40ch] font-serif italic text-[clamp(22px,2.2vw,32px)] font-light leading-[1.22] tracking-tight text-ink-3"
-              style={{ fontVariationSettings: '"opsz" 90, "SOFT" 100' }}
-            >
+            <p className="reveal mt-6 max-w-[40ch] font-serif italic text-[clamp(22px,2.2vw,32px)] font-light leading-[1.22] tracking-tight text-ink-3">
               Governance by refusal in generative systems.
             </p>
 
@@ -157,12 +151,12 @@ export default function EssayPage() {
                 </div>
               </Link>
               <div className="text-right max-md:text-left">
-                <Link href="/founder" className="group inline-block">
+                <Link href="/contact" className="group inline-block">
                   <div className="mb-3 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-4">
                     Next →
                   </div>
                   <div className="h-medium text-ink-2 transition-colors group-hover:text-ink">
-                    Founder
+                    Contact
                   </div>
                 </Link>
               </div>

@@ -49,18 +49,13 @@ export default function Home() {
 
         <main>
           {/* HERO */}
-          <section className="container-x pt-[168px] pb-32 max-md:pt-[128px] max-md:pb-20">
+          <section className="container-x pt-[196px] pb-32 max-md:pt-[156px] max-md:pb-20">
             <div className="reveal font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">
               Identity governance for generative systems
             </div>
             <h1 className="reveal mt-8 h-hero max-w-[18ch]">
               Not every valid output{" "}
-              <em
-                className="italic"
-                style={{ fontVariationSettings: '"opsz" 144, "SOFT" 100' }}
-              >
-                should exist.
-              </em>
+              <em className="italic">should exist.</em>
             </h1>
             <p className="reveal mt-12 max-w-[60ch] p-lede">
               exist. introduces refusal into generative processes — a governance
@@ -95,10 +90,7 @@ export default function Home() {
                         <span className="text-ink">{card.num}</span>
                         <span>{card.title}</span>
                       </div>
-                      <p
-                        className="mb-10 max-w-[38ch] font-serif text-[clamp(22px,1.8vw,28px)] font-normal leading-[1.22] tracking-tight text-ink"
-                        style={{ fontVariationSettings: '"opsz" 60, "SOFT" 30' }}
-                      >
+                      <p className="mb-10 max-w-[38ch] font-serif text-[clamp(22px,1.8vw,28px)] font-normal leading-[1.22] tracking-tight text-ink">
                         {card.body}
                       </p>
                     </div>
@@ -111,41 +103,27 @@ export default function Home() {
             </div>
           </section>
 
-          {/* MOZFEST + CONTACT strip */}
+          {/* MOZFEST BANNER */}
           <section className="border-t border-line bg-bg-alt">
-            <div className="container-x grid grid-cols-2 gap-16 py-24 max-md:grid-cols-1 max-md:gap-10 max-md:py-16">
-              <div className="reveal">
-                <div className="section-label !mb-6">
-                  <span className="num">/</span>
-                  <span>Mozilla Festival 2026</span>
-                </div>
-                <h2 className="h-large max-w-[22ch]">
+            <div className="container-x py-28 max-md:py-20">
+              <div className="reveal section-label">
+                <span className="num">/</span>
+                <span>Mozilla Festival 2026</span>
+              </div>
+              <div className="grid grid-cols-[1fr_1.2fr] items-start gap-24 max-md:grid-cols-1 max-md:gap-10">
+                <h2 className="reveal h-large max-w-[20ch]">
                   exist. at MozFest 2026.
                 </h2>
-                <p className="p-body mt-6 max-w-[46ch]">
-                  Session: The Right to Kill Ideas. Public conversation on
-                  governance by refusal in generative systems.
-                </p>
-                <Link href="/contact" className="link-underline mt-8 inline-block">
-                  Get in touch →
-                </Link>
-              </div>
-
-              <div className="reveal border-l border-line pl-16 max-md:border-l-0 max-md:border-t max-md:pl-0 max-md:pt-10">
-                <div className="section-label !mb-6">
-                  <span className="num">/</span>
-                  <span>Founder</span>
+                <div className="reveal pt-3">
+                  <p className="p-body max-w-[52ch]">
+                    Session: The Right to Kill Ideas. A public conversation on
+                    governance by refusal in generative systems — the argument
+                    behind exist., presented in dialogue with the community.
+                  </p>
+                  <Link href="/contact" className="link-underline mt-8 inline-block">
+                    Get in touch →
+                  </Link>
                 </div>
-                <h2 className="h-large max-w-[22ch]">
-                  Marian Dorobanțu.
-                </h2>
-                <p className="p-body mt-6 max-w-[46ch]">
-                  Eighteen years building artist identities. Founder of ATOM.
-                  Author of The Right to Kill Ideas.
-                </p>
-                <Link href="/founder" className="link-underline mt-8 inline-block">
-                  Read the bio →
-                </Link>
               </div>
             </div>
           </section>

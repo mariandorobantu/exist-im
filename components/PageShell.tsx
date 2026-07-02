@@ -27,7 +27,7 @@ export function PageShell({
         <Nav />
         <main>
           {/* PAGE HEADER */}
-          <header className="container-x pt-[168px] pb-24 max-md:pt-[128px] max-md:pb-16">
+          <header className="container-x pt-[196px] pb-24 max-md:pt-[156px] max-md:pb-16">
             <div className="reveal font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3">
               {eyebrow}
             </div>

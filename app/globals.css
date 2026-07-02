@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --page-x: clamp(24px, 4.5vw, 56px);
-    --nav-h: 68px;
+    --nav-h: 112px;
   }
 
   html {

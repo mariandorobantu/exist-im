@@ -217,7 +217,9 @@ function LayerBlock({
           </p>
         </div>
 
-        <div className="reveal mt-16 grid grid-cols-3 gap-px bg-line max-md:grid-cols-1">
+        <div className={`reveal mt-16 grid gap-px bg-line max-md:grid-cols-1 ${
+          agents.length === 4 ? "grid-cols-2" : "grid-cols-3"
+        }`}>
           {agents.map((a) => (
             <div
               key={a.num}

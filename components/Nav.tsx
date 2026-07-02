@@ -10,7 +10,6 @@ const LINKS = [
   { href: "/system", label: "System" },
   { href: "/agents", label: "Agents" },
   { href: "/essay", label: "Essay" },
-  { href: "/founder", label: "Founder" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -35,7 +34,7 @@ export function Nav() {
       style={{ height: "var(--nav-h)" }}
     >
       <div className="container-x flex h-full items-center justify-between">
-        <Logo mode="nav" size="md" href="/" />
+        <Logo mode="nav" size="lg" href="/" />
 
         <nav aria-label="Primary" className="flex items-center gap-6 max-md:gap-4">
           {LINKS.map((link) => {
@@ -52,7 +51,6 @@ export function Nav() {
               </Link>
             );
           })}
-          {/* Mobile compact menu */}
           <MobileMenu pathname={pathname} />
         </nav>
       </div>
@@ -100,7 +98,6 @@ function MobileMenu({ pathname }: { pathname: string }) {
               className={`font-serif text-[36px] leading-none tracking-tight ${
                 pathname === link.href ? "text-ink" : "text-ink-3"
               }`}
-              style={{ fontVariationSettings: '"opsz" 90, "SOFT" 30' }}
             >
               {link.label}
             </Link>

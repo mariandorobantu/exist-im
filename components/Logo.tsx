@@ -16,10 +16,10 @@ type Props = {
 };
 
 const SIZE_CLASS: Record<NonNullable<Props["size"]>, string> = {
-  sm: "text-[22px]",
-  md: "text-[28px]",
-  lg: "text-[54px]",
-  xl: "text-[clamp(96px,15vw,220px)]",
+  sm: "text-[26px]",
+  md: "text-[36px]",
+  lg: "text-[68px]",
+  xl: "text-[clamp(110px,17vw,240px)]",
 };
 
 /**
@@ -50,7 +50,6 @@ export function Logo({
   const inner = (
     <span
       className={`inline-flex items-baseline font-serif font-normal leading-none tracking-tightest text-ink ${SIZE_CLASS[size]} ${className}`}
-      style={{ fontVariationSettings: '"opsz" 144, "SOFT" 15' }}
       aria-label="exist."
     >
       <span aria-hidden="true">e</span>
