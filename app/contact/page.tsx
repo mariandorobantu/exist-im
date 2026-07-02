@@ -18,7 +18,7 @@ export default function ContactPage() {
           limits of generation.
         </>
       }
-      prev={{ href: "/founder", label: "Founder" }}
+      prev={{ href: "/essay", label: "Essay" }}
     >
       <section className="container-x border-t border-line py-32 max-md:py-20">
         <div className="reveal section-label">
