@@ -25,44 +25,85 @@ export function Nav() {
   }, []);
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ease-smooth ${
-        scrolled
-          ? "border-line/70 bg-bg/85 backdrop-blur-md"
-          : "border-transparent bg-bg/0"
-      }`}
-      style={{ height: "var(--nav-h)" }}
-    >
-      <div className="container-x flex h-full items-center justify-between">
-        <Logo mode="nav" size="lg" href="/" />
+    <>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ease-smooth ${
+          scrolled
+            ? "border-line/70 bg-bg/85 backdrop-blur-md"
+            : "border-transparent bg-bg/0"
+        }`}
+        style={{ height: "var(--nav-h)" }}
+      >
+        <div className="container-x flex h-full items-center justify-between">
+          <Logo mode="nav" size="lg" href="/" />
 
-        <nav aria-label="Primary" className="flex items-center gap-6 max-md:gap-4">
-          {LINKS.map((link) => {
-            const active = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`hidden font-mono text-[11px] uppercase tracking-[0.16em] transition-opacity duration-200 hover:opacity-60 md:inline ${
-                  active ? "text-ink" : "text-ink-3"
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-          <MobileMenu pathname={pathname} />
-        </nav>
-      </div>
-    </header>
+          <nav aria-label="Primary" className="flex items-center gap-6 max-md:gap-4">
+            {LINKS.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`hidden font-mono text-[11px] uppercase tracking-[0.16em] transition-opacity duration-200 hover:opacity-60 md:inline ${
+                    active ? "text-ink" : "text-ink-3"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+            <MobileMenuButton />
+          </nav>
+        </div>
+      </header>
+      <MobileMenuOverlay pathname={pathname} />
+    </>
   );
 }
 
-function MobileMenu({ pathname }: { pathname: string }) {
-  const [open, setOpen] = useState(false);
+/* ------------------------------------------------------------------ */
+/*                          MOBILE MENU                                */
+/* ------------------------------------------------------------------ */
+
+let listeners: Array<(v: boolean) => void> = [];
+let isOpen = false;
+function setMenuOpen(v: boolean) {
+  isOpen = v;
+  listeners.forEach((cb) => cb(v));
+}
+function useMenu(): [boolean, (v: boolean) => void] {
+  const [open, setOpen] = useState(isOpen);
+  useEffect(() => {
+    const cb = (v: boolean) => setOpen(v);
+    listeners.push(cb);
+    return () => {
+      listeners = listeners.filter((l) => l !== cb);
+    };
+  }, []);
+  return [open, setMenuOpen];
+}
+
+function MobileMenuButton() {
+  const [open, setOpen] = useMenu();
+  return (
+    <button
+      type="button"
+      aria-label={open ? "Close menu" : "Open menu"}
+      aria-expanded={open}
+      onClick={() => setOpen(!open)}
+      className="md:hidden font-mono text-[11px] uppercase tracking-[0.16em] text-ink"
+    >
+      {open ? "Close" : "Menu"}
+    </button>
+  );
+}
+
+function MobileMenuOverlay({ pathname }: { pathname: string }) {
+  const [open, setOpen] = useMenu();
 
   useEffect(() => {
     setOpen(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   useEffect(() => {
@@ -73,37 +114,51 @@ function MobileMenu({ pathname }: { pathname: string }) {
   }, [open]);
 
   return (
-    <>
-      <button
-        type="button"
-        aria-label={open ? "Close menu" : "Open menu"}
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-        className="md:hidden font-mono text-[11px] uppercase tracking-[0.16em] text-ink"
-      >
-        {open ? "Close" : "Menu"}
-      </button>
-
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-hidden={!open}
+      className="md:hidden"
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 60,
+        background: "#ffffff",
+        visibility: open ? "visible" : "hidden",
+        opacity: open ? 1 : 0,
+        transition:
+          "opacity 260ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear " +
+          (open ? "0s" : "260ms"),
+      }}
+    >
       <div
-        className={`fixed inset-0 z-40 bg-bg transition-opacity duration-300 md:hidden ${
-          open ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
-        style={{ paddingTop: "var(--nav-h)" }}
+        className="container-x flex flex-col"
+        style={{ paddingTop: "calc(var(--nav-h) + 32px)" }}
       >
-        <div className="container-x flex flex-col gap-6 pt-12">
+        <nav aria-label="Mobile primary" className="flex flex-col gap-1">
           {LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`font-serif text-[36px] leading-none tracking-tight ${
-                pathname === link.href ? "text-ink" : "text-ink-3"
+              onClick={() => setOpen(false)}
+              className={`font-serif text-[44px] leading-[1.05] tracking-tightest ${
+                pathname === link.href ? "text-ink" : "text-ink-2"
               }`}
             >
               {link.label}
+              {pathname === link.href && (
+                <span className="logo-dot" aria-hidden="true">
+                  .
+                </span>
+              )}
             </Link>
           ))}
+        </nav>
+
+        <div className="mt-auto pb-14 pt-20 font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-4">
+          © MMXXVI · Refusal SRL · Bucharest
         </div>
       </div>
-    </>
+    </div>
   );
 }
