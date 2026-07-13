@@ -38,7 +38,7 @@ export function Footer() {
 
         <div className="mt-16 flex items-center justify-between border-t border-line pt-6 max-md:flex-col max-md:items-start max-md:gap-3">
           <p className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-4">
-            © MMXXVI · Refusal SRL · Bucharest
+            © MMXXVI · Unthings SRL · Bucharest
           </p>
           <p className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-ink-4">
             hello@exist.im
