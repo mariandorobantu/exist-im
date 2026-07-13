@@ -46,12 +46,12 @@ export default function ContactPage() {
           />
           <ContactCell
             label="Founder"
-            value="marian@atom.ro"
-            href="mailto:marian@atom.ro"
+            value="marian@exist.im"
+            href="mailto:marian@exist.im"
           />
           <ContactCell
             label="Entity"
-            value="Refusal SRL · Bucharest"
+            value="Unthings SRL · Bucharest"
           />
         </div>
       </section>
